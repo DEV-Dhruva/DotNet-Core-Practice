@@ -1,0 +1,31 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+	Hello Guys
+	<br />
+	<br />
+	@if (!(User?.Identity?.IsAuthenticated ?? false))
+	{
+		<a href="/Account/Register">Register</a>
+		<br />
+		<a href="/Account/Login">Login</a>
+	}
+	else
+	{
+		<h4>I am back ... @User.Identity.Name</h4>
+		<br />
+		<a href="/Account/Logout">Logout</a>
+	}
+</div>
+
+<br />
+<br />
+
+<div class="text-center">
+	@if (User != null && User.IsInRole("Admin"))
+	{
+		<a href="/Admin">Admin Dashboard</a>
+	}
+</div>
